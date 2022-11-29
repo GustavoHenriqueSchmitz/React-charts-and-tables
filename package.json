@@ -1,0 +1,24 @@
+{
+  "name": "react-charts-and-tables-back",
+  "version": "1.0.0",
+  "description": "Treinando criação de tabelas e gráficos. Back-end do projeto.\r Front: https://github.com/GustavoHenriqueSchmitz/React-charts-and-tables-Front",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GustavoHenriqueSchmitz/React-charts-and-tables-Back.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GustavoHenriqueSchmitz/React-charts-and-tables-Back/issues"
+  },
+  "homepage": "https://github.com/GustavoHenriqueSchmitz/React-charts-and-tables-Back#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}
