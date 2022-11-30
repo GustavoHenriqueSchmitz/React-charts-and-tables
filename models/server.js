@@ -1,10 +1,11 @@
 const express = require('express');
 const { Sequelize } = require('sequelize');
+const Router = require("express")
 
 const server = {
     app: express(),
     port: 3330,
-
+    router: Router(),
     database: new Sequelize('employees', 'root', '', {
         host: '127.0.0.1',
         port: 3306,

@@ -25,7 +25,7 @@ const Employees = server.database.define('employees', {
         allowNull: false,
     },
 
-    Salary: {
+    salary: {
         type: Sequelize.DECIMAL(10,2),
         allowNull: false,
     },
