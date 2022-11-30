@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+.container-buttons {
+    display: flex;
+    height: 30vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    border: 0.1vmin solid black;
+    background-color: rgb(206, 204, 204);
+    height: 22%;
+    width: 13%;
+}
+
+.button-left {
+    font-size: 2.8vmin;
+    border-bottom-left-radius: 2vmin;
+    border-top-left-radius: 2vmin;
+}
+
+.button-right {
+    font-size: 2.8vmin;
+    border-bottom-right-radius: 2vmin;
+    border-top-right-radius: 2vmin;
+}

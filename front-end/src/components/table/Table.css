@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.table-container {
+    display: flex;
+    width: 90%;
+    margin-left: 5%;
+    justify-content: center;
+    align-items: center;
+}
+
+.table {
+    width: 100%;
+}
+
+.table-title {
+    border-bottom: 1px solid black;
+}
+
+.table-body {
+    text-align: center;
+}
+
+thead {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    padding: 0.4em;
+}
