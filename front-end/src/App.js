@@ -2,9 +2,14 @@ import './App.css';
 import { Header } from './components/header/Header';
 import { ButtonsGraficTable } from './components/buttons/GraphicTable';
 import { Table } from './components/table/Table';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { api } from './service/axios';
 
 function App() {
+
+  const [data, setData] = useState(React.useMemo(
+    () => [],[]
+  ))
 
   const columns = React.useMemo(
     () => [
@@ -33,29 +38,13 @@ function App() {
     []
   )
 
-  const data = React.useMemo(
-    () => [
-      {
-        name: 'Marcelo',
-        age: 19,
-        jobFunction: 'Programador',
-        salary: 'R$ 4.500',
-        salaryTarget: 'R$ 15.000'
-      },
-      {
-        name: 'Marcelo',
-        age: 19,
-        jobFunction: 'Programador',
-        salary: 'R$ 4.500',
-        salaryTarget: 'R$ 15.000' 
-      },
-      {
-        col1: 'whatever',
-        col2: 'you want',
-      },
-    ],
-    []
-  )
+  useEffect(()=> {
+    async function getData() {
+      const employees = await api.get('/employees/table')
+      setData(employees.data)
+    }
+    getData()
+  }, [])
 
   return (
     <>
