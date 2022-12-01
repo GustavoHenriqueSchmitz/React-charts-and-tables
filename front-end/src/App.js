@@ -1,9 +1,9 @@
 import './App.css';
 import { Header } from './components/header/Header';
-import { ButtonsGraficTable } from './components/buttons/GraphicTable';
 import { Table } from './components/table/Table';
 import React, { useEffect, useState } from 'react';
 import { api } from './service/axios';
+import { ButtonsGraficTable } from './components/buttons/GraphicTable';
 
 function App() {
 

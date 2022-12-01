@@ -3,20 +3,19 @@ import { useTable, usePagination  } from "react-table"
 import "./Table.css"
 import ReactSelect from 'react-select'
 
-const IndeterminateCheckbox = React.forwardRef(
-    ({ indeterminate, ...rest }, ref) => {
-        const defaultRef = React.useRef()
-        const resolvedRef = ref || defaultRef
-
-        React.useEffect(() => {
-        resolvedRef.current.indeterminate = indeterminate
-        }, [resolvedRef, indeterminate])
-
-        return <input type="checkbox" ref={resolvedRef} {...rest} />
-    }
-)
+function colunaSelect(column){
+    return (
+        <div key={column?.data?.id}>
+            <label>
+            <input type="checkbox" {...column?.data?.getToggleHiddenProps()} />{' '}
+            {column?.data?.Header}
+            </label>
+        </div>
+    )
+}
 
 function Table({ columns, data }) {
+    
     const {
         getTableProps,
         getTableBodyProps,
@@ -27,11 +26,10 @@ function Table({ columns, data }) {
         canPreviousPage,
         canNextPage,
         pageOptions,
-        pageCount,
         allColumns,
+        pageCount,
         gotoPage,
         nextPage,
-        getToggleHideAllColumnsProps,
         previousPage,
         setPageSize,
         state: { pageIndex, pageSize },
@@ -47,20 +45,35 @@ function Table({ columns, data }) {
     // Render the UI for your table
     return (
         <>
-        <div className="checkboxes-container">
-            <div>
-                <IndeterminateCheckbox {...getToggleHideAllColumnsProps()} /> Toggle
-                All
-            </div>
-            {allColumns.map(column => (
-                <div key={column.id}>
-                    <label>
-                    <input type="checkbox" {...column.getToggleHiddenProps()} />{' '}
-                    {column.id}
-                    </label>
+            <div className="options-container">
+                <div className="show-option">
+                    <select
+                        value={pageSize}
+                        onChange={e => {
+                        setPageSize(Number(e.target.value))
+                        }}
+                        className="show-select text"
+                        >
+                        {[10, 20, 30, 40, 50].map(pageSize => (
+                        <option key={pageSize} value={pageSize}>
+                            Mostar {pageSize}
+                        </option>
+                        ))}
+                    </select>
                 </div>
-            ))}
+                <div className="hide-columns-option text">
+                    <ReactSelect
+                        options={allColumns}
+                        isMulti
+                        closeMenuOnSelect={false}
+                        hideSelectedOptions={false}
+                        components={{ Option: colunaSelect }}
+                        allowSelectAll={true}
+                        className="hide-columns-select"
+                    />
+                </div>
             </div>
+
             <div className="table-container">
                 <table className="table" {...getTableProps()}>
                     
@@ -68,7 +81,7 @@ function Table({ columns, data }) {
                         {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map(column => (
-                            <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                            <th className="sub-title" {...column.getHeaderProps()}>{column.render('Header')}</th>
                             ))}
                         </tr>
                         ))}
@@ -80,58 +93,49 @@ function Table({ columns, data }) {
                         return (
                             <tr {...row.getRowProps()}>
                             {row.cells.map(cell => {
-                                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                return <td className="text" {...cell.getCellProps()}>{cell.render('Cell')}</td>
                             })}
                             </tr>
                         )
                         })}
                     </tbody>
-                
                 </table>
+                
                 <div className="pagination">
-                    <button className="button" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                        {'<<'}
-                    </button>{' '}
-                    <button className="button" onClick={() => previousPage()} disabled={!canPreviousPage}>
-                        {'<'}
-                    </button>{' '}
-                    <button className="button" onClick={() => nextPage()} disabled={!canNextPage}>
-                        {'>'}
-                    </button>{' '}
-                    <button className="button" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-                        {'>>'}
-                    </button>{' '}
-                    <span>
-                        Page{' '}
-                        <strong>
-                        {pageIndex + 1} of {pageOptions.length}
-                        </strong>{' '}
-                    </span>
-                    <span>
-                        | Go to page:{' '}
-                        <input
-                        type="number"
-                        defaultValue={pageIndex + 1}
-                        onChange={e => {
-                            const page = e.target.value ? Number(e.target.value) - 1 : 0
-                            gotoPage(page)
-                        }}
-                        style={{ width: '100px' }}
-                        />
-                    </span>{' '}
-                    <select
-                        value={pageSize}
-                        onChange={e => {
-                        setPageSize(Number(e.target.value))
-                        }}
-                        className="select"
-                    >
-                        {[10, 20, 30, 40, 50].map(pageSize => (
-                        <option key={pageSize} value={pageSize}>
-                            Show {pageSize}
-                        </option>
-                        ))}
-                    </select>
+                    <div className="pagination-buttons">
+                        <button className="button-navigate" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+                            {'<<'}
+                        </button>{' '}
+                        <button className="button-navigate" onClick={() => previousPage()} disabled={!canPreviousPage}>
+                            {'<'}
+                        </button>{' '}
+                        <button className="button-navigate" onClick={() => nextPage()} disabled={!canNextPage}>
+                            {'>'}
+                        </button>{' '}
+                        <button className="button-navigate" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+                            {'>>'}
+                        </button>{' '}
+                    </div>
+                    <div>
+                        <span className="text">
+                            Página{' '}
+                            <strong>
+                            {pageIndex + 1} de {pageOptions.length}
+                            </strong>{' '}
+                        </span>
+                        <span className="text">
+                            | Ir para página:{' '}
+                            <input
+                            type="number"
+                            defaultValue={pageIndex + 1}
+                            onChange={e => {
+                                const page = e.target.value ? Number(e.target.value) - 1 : 0
+                                gotoPage(page)
+                            }}
+                            style={{ width: '100px' }}
+                            />
+                        </span>{' '}
+                    </div>
                 </div>
         </div>
     </>

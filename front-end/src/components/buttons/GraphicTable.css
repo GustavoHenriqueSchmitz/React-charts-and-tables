@@ -1,10 +1,11 @@
 @charset "UTF-8";
 
-.container-buttons {
+.buttons-grafic-table {
     display: flex;
-    height: 25vh;
+    height: 12vh;
+    width: 100%;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .buttons {
@@ -14,8 +15,8 @@
     color: black;
     border: 0.1vmin solid black;
     background-color: rgb(206, 204, 204);
-    height: 25%;
-    width: 13%;
+    height: 50%;
+    width: 20%;
 }
 
 .button-left {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 function ButtonsGraficTable({textButtonLeft, textButtonRight}) {
     return (
-        <div className="container-buttons">
+        <div className="buttons-grafic-table">
             <div className="buttons button-left">{textButtonLeft}</div>
             <div className="buttons button-right">{textButtonRight}</div>
         </div>

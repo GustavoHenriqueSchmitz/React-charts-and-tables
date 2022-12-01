@@ -1,10 +1,53 @@
 @charset "UTF-8";
 
+.text {
+    text-align: center;
+    font-size: 2.7vmin;
+}
+
+.sub-title {
+    font-size: 3.5vmin;
+}
+
+.options-container {
+    display: flex;
+    padding: 0 4%;
+    height: 20vh;
+}
+
+.show-option {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+}
+
+.show-select {
+    border-radius: 1.5vmin;
+    height: 30%;
+    width: 33%;
+    background-color: rgb(0, 108, 117);
+    color: white;
+}
+
+.hide-columns-option {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.hide-columns-select {
+    width: 40%;
+}
+
 .table-container {
     display: flex;
+    padding: 0% 4%;
     flex-direction: column;
     width: 100%;
-    padding: 3.3%;
     justify-content: center;
     align-items: center;
 }
@@ -20,14 +63,6 @@ th, td {
     border-bottom: 1px solid black;
 }
 
-th {
-    font-size: 3.5vmin;
-}
-
-td {
-    font-size: 2.5vmin;
-}
-
 .table-body {
     text-align: center;
 }
@@ -39,19 +74,26 @@ thead {
     padding: 0.4em;
 }
 
-.button {
+.button-navigate {
     background-color: rgb(0, 108, 117);
     color: white;
 }
 
-.select {
-    background-color: rgb(0, 108, 117);
-    color: white;
-}
-
-.checkboxes-container {
+.pagination {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
+}
+
+.pagination-buttons {
+    display: flex;
+    width: 20%;
+    justify-content: flex-start;
+}
+
+.pagination-buttons button {
+    height: 3%;
+    margin: 0 8% 0 0;
 }
