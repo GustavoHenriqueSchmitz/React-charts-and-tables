@@ -2,7 +2,7 @@
 
 .container-buttons {
     display: flex;
-    height: 30vh;
+    height: 25vh;
     justify-content: center;
     align-items: center;
 }
@@ -14,7 +14,7 @@
     color: black;
     border: 0.1vmin solid black;
     background-color: rgb(206, 204, 204);
-    height: 22%;
+    height: 25%;
     width: 13%;
 }
 
