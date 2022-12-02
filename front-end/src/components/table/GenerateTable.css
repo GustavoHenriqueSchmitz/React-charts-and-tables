@@ -4,7 +4,7 @@
 
 .text {
     text-align: center;
-    font-size: 2.7vmin;
+    font-size: 2.6vmin;
 }
 
 .sub-title {
@@ -47,7 +47,7 @@
 
 .table-container {
     display: flex;
-    padding: 0% 4%;
+    padding: 0.5% 4% 3% 4%;
     flex-direction: column;
     width: 100%;
     justify-content: center;
@@ -96,6 +96,7 @@ thead {
 }
 
 .pagination-buttons button {
+    border-radius: 1vmin;
     height: 3%;
     margin: 0 8% 0 0;
 }

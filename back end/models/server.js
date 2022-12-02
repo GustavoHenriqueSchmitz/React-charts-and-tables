@@ -4,7 +4,7 @@ const Router = require("express")
 
 const server = {
     app: express(),
-    port: 3330,
+    port: 3331,
     router: Router(),
     database: new Sequelize('employees', 'root', '', {
         host: '127.0.0.1',
