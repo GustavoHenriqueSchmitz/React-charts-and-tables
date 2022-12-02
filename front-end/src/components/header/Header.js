@@ -14,4 +14,4 @@ Header.propTypes = {
     title: PropTypes.string.isRequired,
 }
 
-export {Header}
+export { Header }

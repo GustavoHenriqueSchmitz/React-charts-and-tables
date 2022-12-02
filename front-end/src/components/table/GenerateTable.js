@@ -1,6 +1,6 @@
 import React from "react"
 import { useTable, usePagination  } from "react-table"
-import "./Table.css"
+import "./GenerateTable.css"
 import ReactSelect from 'react-select'
 
 function colunaSelect(column){
@@ -14,7 +14,7 @@ function colunaSelect(column){
     )
 }
 
-function Table({ columns, data }) {
+function GenerateTable({ columns, data }) {
     
     const {
         getTableProps,
@@ -142,4 +142,4 @@ function Table({ columns, data }) {
     )
 }
 
-export {Table}
+export { GenerateTable }
