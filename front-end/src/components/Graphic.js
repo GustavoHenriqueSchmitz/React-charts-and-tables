@@ -1,4 +1,5 @@
 import { ButtonsGraphicTable } from "./buttons/GraphicTable"
+import { GenerateGraphic } from "./graphic/GenerateGraphic"
 import { Header } from "./header/Header"
 
 function Graphic() {
@@ -6,6 +7,7 @@ function Graphic() {
         <>
             <Header title="GRÁFICO"/>
             <ButtonsGraphicTable textButtonLeft="Gráfico" textButtonRight="Tabela"/>
+            <GenerateGraphic/>
         </>
     )
 }
