@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import { Table } from './components/Table';
 import { Principal } from './components/principal/principal';
+import { Graphic } from './components/Graphic';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Principal/>}/>
           <Route exact path="/tabela" element={<Table/>}/>
+          <Route exact path="/grafico" element={<Graphic/>}/>
         </Routes>
       </Router>
     </>

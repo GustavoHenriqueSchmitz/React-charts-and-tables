@@ -1,7 +1,7 @@
 import { Header } from './header/Header';
 import React, { useEffect, useState } from 'react';
 import { api } from '../service/axios';
-import { ButtonsGraficTable } from './buttons/GraphicTable';
+import { ButtonsGraphicTable } from './buttons/GraphicTable';
 import { GenerateTable } from './table/GenerateTable'
 
 function Table() {
@@ -39,7 +39,7 @@ function Table() {
     
         useEffect(()=> {
         async function getData() {
-            const employees = await api.get('/employees/table')
+            const employees = await api.get('/employees')
             setData(employees.data)
         }
         getData()
@@ -48,7 +48,7 @@ function Table() {
     return (
         <>
             <Header title='TABELA'/>
-            <ButtonsGraficTable textButtonLeft="Gráfico" textButtonRight="Tabela"/>
+            <ButtonsGraphicTable textButtonLeft="Gráfico" textButtonRight="Tabela"/>
             <GenerateTable columns={columns} data={data}/>
         </>
     );

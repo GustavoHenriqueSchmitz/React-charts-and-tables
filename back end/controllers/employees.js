@@ -18,4 +18,15 @@ async function getEmployees(req, res) {
     res.end()
 }
 
-module.exports = getEmployees
+async function getSalary(req, res) {
+    const salary = await Employees.findAll({
+        attributes: [
+            'salary'
+        ]
+    })
+
+    res.send(salary)
+    res.end()
+}
+
+module.exports = { getEmployees, getSalary }

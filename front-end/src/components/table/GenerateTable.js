@@ -3,7 +3,7 @@ import { useTable, usePagination  } from "react-table"
 import "./GenerateTable.css"
 import ReactSelect from 'react-select'
 
-function colunaSelect(column){
+function columnSelect(column){
     return (
         <div key={column?.data?.id}>
             <label>
@@ -67,7 +67,7 @@ function GenerateTable({ columns, data }) {
                         isMulti
                         closeMenuOnSelect={false}
                         hideSelectedOptions={false}
-                        components={{ Option: colunaSelect }}
+                        components={{ Option: columnSelect }}
                         allowSelectAll={true}
                         className="hide-columns-select"
                     />
