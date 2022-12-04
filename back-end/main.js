@@ -10,7 +10,6 @@ const cors = require('cors');
         extended: false
     }));
     server.app.use(cors())
-    // Define the application routes
     server.app.use('/api', server.router)
 
     try {

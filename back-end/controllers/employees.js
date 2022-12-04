@@ -19,13 +19,17 @@ async function getEmployees(req, res) {
 }
 
 async function getSalary(req, res) {
+    
     const salary = await Employees.findAll({
         attributes: [
             'salary'
         ]
     })
 
-    res.send(salary)
+    const salaryList = []
+    salary.map( value => salaryList.push(value.salary))
+
+    res.send(salaryList)
     res.end()
 }
 
