@@ -1,49 +1,100 @@
 import React, { useEffect, useState } from "react"
 import { api } from "../service/axios"
 import { ButtonsGraphicTable } from "./buttons/GraphicTable"
-import { GenerateGraphic } from "./graphic/GenerateGraphic"
+import { DonutGraphic } from "./graphic/donut/DonutGraphic"
+import { ColumnGraphic } from "./graphic/column/ColumnGraphic"
 import { Header } from "./header/Header"
 
 function Graphic() {
 
-    const [series, setSeries] = useState(React.useMemo(
+    const [salary, setSalary] = useState(React.useMemo(
+        () => [],[]
+    ))
+    const [employees, setEmployees] = useState(React.useMemo(
         () => [],[]
     ))
 
     useEffect(()=> {
-        async function getSalary() {
-            const salary = await api.get('/employees/salary')
-            setSeries(salary.data)
+        async function getDatas() {
+            const salary = await api.get('/graphic/donut')
+            const employees = await api.get('/graphic/column')
+            setSalary(salary.data)
+            setEmployees(employees.data)
         }
-        getSalary()
+        getDatas()
     }, [])
 
-    const options = {
-        series: series,
-        labels: ['0 a 500', '500 a 1000', '1000 a 2000', '2000 a 10000', '10000 >']
-    }
+    try {
 
-    return (
-        <>
-            <Header title="GRÁFICO"/>
-            <ButtonsGraphicTable textButtonLeft="Gráfico" textButtonRight="Tabela"/>
-            <GenerateGraphic options={options}/>
-        </>
-    )
+        const optionsDonut = {
+            series: salary,
+            labels: ['0 a 500', '500 a 1000', '1000 a 2000', '2000 a 10000', '10000 >']
+        }
+
+        const optionsColumn = {
+
+            series: [{
+                    name: 'Salário',
+                    data: [
+                        employees[0].salary,
+                        employees[1].salary,
+                        employees[2].salary,
+                        employees[3].salary,
+                        employees[4].salary,
+                        employees[5].salary,
+                        employees[6].salary,
+                        employees[7].salary,
+                        employees[8].salary
+                    ]
+                }, {
+                    name: 'Meta Salarial',
+                    data: [
+                        employees[0].salaryTarget,
+                        employees[1].salaryTarget,
+                        employees[2].salaryTarget,
+                        employees[3].salaryTarget,
+                        employees[4].salaryTarget,
+                        employees[5].salaryTarget,
+                        employees[6].salaryTarget,
+                        employees[7].salaryTarget,
+                        employees[8].salaryTarget
+                    ]
+                },
+            ],
+            options: {
+                dataLabels: {
+                    enabled: false
+                },
+                xaxis: {
+                    categories: [
+                        employees[0].name,
+                        employees[1].name,
+                        employees[2].name,
+                        employees[3].name,
+                        employees[4].name,
+                        employees[5].name,
+                        employees[6].name,
+                        employees[7].name,
+                        employees[8].name
+                    ],
+                },
+                yaxis: {
+                    title: {
+                        text: 'Funcionários | Comparação de Salários'
+                    }
+                },
+            },
+        };
+    
+        return (
+            <>
+                <Header title="GRÁFICO"/>
+                <ButtonsGraphicTable textButtonLeft="Gráfico" textButtonRight="Tabela"/>
+                <DonutGraphic options={optionsDonut}/>
+                <ColumnGraphic options={optionsColumn}/>
+            </>
+        )
+    } catch {}
 }
-
-// Define a custom filter filter function!
-function filterGreaterThan(rows, id, filterValue) {
-    return rows.filter(row => {
-        const rowValue = row.values[id]
-        return rowValue >= filterValue
-    })
-}
-
-// This is an autoRemove method on the filter function that
-// when given the new filter value and returns true, the filter
-// will be automatically removed. Normally this is just an undefined
-// check, but here, we want to remove the filter if it's not a number
-filterGreaterThan.autoRemove = val => typeof val !== 'number'
 
 export { Graphic }

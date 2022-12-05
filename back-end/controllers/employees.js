@@ -8,7 +8,6 @@ async function getEmployees(req, res) {
             'name',
             'age',
             'jobFunction',
-            'salary',
             [Sequelize.fn('concat', Sequelize.fn('format', Sequelize.col('salary'), 'pt_BR')), 'salary'],
             [Sequelize.fn('concat', Sequelize.fn('format', Sequelize.col('salary_target'), 'pt_BR')), 'salaryTarget'],
         ],
@@ -18,7 +17,7 @@ async function getEmployees(req, res) {
     res.end()
 }
 
-async function getSalary(req, res) {
+async function graphicDonut(req, res) {
     
     const salary = await Employees.findAll({
         attributes: [
@@ -50,4 +49,18 @@ async function getSalary(req, res) {
     res.end()
 }
 
-module.exports = { getEmployees, getSalary }
+async function graphicColumn(req, res) {
+
+    const employees = await Employees.findAll({
+        attributes: [
+            'name',
+            'salary',
+            'salaryTarget'
+        ],
+    })
+
+    res.send(employees)
+    res.end()
+}
+
+module.exports = { getEmployees, graphicDonut, graphicColumn }

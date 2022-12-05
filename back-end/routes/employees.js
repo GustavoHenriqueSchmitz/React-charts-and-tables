@@ -1,5 +1,6 @@
-const { getEmployees, getSalary } = require('../controllers/employees')
+const { getEmployees, graphicDonut, graphicColumn } = require('../controllers/employees')
 const server = require('../models/server')
 
 server.router.get('/employees', getEmployees)
-server.router.get('/employees/salary', getSalary)
+server.router.get('/graphic/donut', graphicDonut)
+server.router.get('/graphic/column', graphicColumn)
