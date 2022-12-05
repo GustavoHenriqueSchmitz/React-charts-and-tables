@@ -1,0 +1,7 @@
+.principal {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 17% 83%;
+    align-items: center;
+    height: 100vh;
+}
