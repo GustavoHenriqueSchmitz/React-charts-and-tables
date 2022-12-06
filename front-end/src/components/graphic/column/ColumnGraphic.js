@@ -1,4 +1,3 @@
-import './ColumnGraphic.css'
 import Chart from 'react-apexcharts'
 
 function ColumnGraphic({options}) {

@@ -4,6 +4,7 @@ import { ButtonsGraphicTable } from "./buttons/GraphicTable"
 import { DonutGraphic } from "./graphic/donut/DonutGraphic"
 import { ColumnGraphic } from "./graphic/column/ColumnGraphic"
 import { Header } from "./header/Header"
+import { LineGraphic } from "./graphic/line/LineGraphic"
 
 function Graphic() {
 
@@ -92,6 +93,10 @@ function Graphic() {
                 <ButtonsGraphicTable textButtonLeft="Gráfico" textButtonRight="Tabela"/>
                 <DonutGraphic options={optionsDonut}/>
                 <ColumnGraphic options={optionsColumn}/>
+                <LineGraphic name="Total de salários pago"
+                    categories={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']}
+                    data={[10, 41, 35, 51, 49, 62, 69, 91, 148]} 
+                    text="Aumento | Gasto Salarial"/>
             </>
         )
     } catch {}

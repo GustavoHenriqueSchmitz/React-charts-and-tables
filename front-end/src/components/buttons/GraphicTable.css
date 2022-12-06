@@ -15,6 +15,7 @@
     color: black;
     border: 0.1vmin solid black;
     background-color: rgb(206, 204, 204);
+    cursor: pointer;
 }
 
 .buttons:hover {
