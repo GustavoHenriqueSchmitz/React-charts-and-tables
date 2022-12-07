@@ -1,4 +1,5 @@
 import Chart from 'react-apexcharts'
+import PropTypes from 'prop-types'
 
 function LineGraphic({name, data, categories, text}) {
 
@@ -42,6 +43,13 @@ function LineGraphic({name, data, categories, text}) {
             <Chart options={options.options} series={options.series} type="line" height={350} />
         )
     } catch {}
+}
+
+LineGraphic.propTypes = {
+    name: PropTypes.string.isRequired,
+    data: PropTypes.array.isRequired,
+    categories: PropTypes.array.isRequired,
+    text: PropTypes.string.isRequired,
 }
 
 export { LineGraphic }

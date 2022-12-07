@@ -1,5 +1,6 @@
 import Chart from 'react-apexcharts'
 import './DonutGraphic.css'
+import PropTypes from 'prop-types'
 
 function DonutGraphic({series, labels}) {
 
@@ -15,6 +16,11 @@ function DonutGraphic({series, labels}) {
             </div>
         </>
     )
+}
+
+DonutGraphic.propTypes = {
+    series: PropTypes.array.isRequired,
+    labels: PropTypes.array.isRequired,
 }
 
 export { DonutGraphic }

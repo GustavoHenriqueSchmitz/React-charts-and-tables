@@ -1,4 +1,5 @@
 import Chart from 'react-apexcharts'
+import PropTypes from 'prop-types'
 
 function ColumnGraphic({
         seriesData1,
@@ -38,6 +39,15 @@ function ColumnGraphic({
             <Chart options={options.options} series={options.series} type="bar" height={350}/>
         )
     } catch {}
+}
+
+ColumnGraphic.propTypes = {
+    seriesData1: PropTypes.array.isRequired,
+    seriesData2: PropTypes.array.isRequired,
+    seriesName1: PropTypes.string.isRequired,
+    seriesName2: PropTypes.string.isRequired,
+    categories: PropTypes.array.isRequired,
+    title: PropTypes.string.isRequired,
 }
 
 export { ColumnGraphic }

@@ -33,7 +33,6 @@ function Graphic() {
     try {
         return (
             <>
-                
                 <Header title="GRÁFICO"/>
                 <ButtonsGraphicTable textButtonLeft="Gráfico" textButtonRight="Tabela"/>
                 
