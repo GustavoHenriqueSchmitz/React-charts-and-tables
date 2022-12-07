@@ -95,7 +95,7 @@ function SliderColumnFilter({
                     setFilter(parseInt(e.target.value, 10))
                 }}
                 />
-            <button onClick={() => setFilter(undefined)}>Off</button>
+            <button onClick={() => setFilter(undefined)} className="buttons">Off</button>
         </>
     )
 }
@@ -186,7 +186,7 @@ function GenerateTable({ columns, data }) {
                         >
                         {[10, 20, 30, 40, 50].map(pageSize => (
                         <option key={pageSize} value={pageSize}>
-                            Mostar {pageSize}
+                            Mostrar {pageSize}
                         </option>
                         ))}
                     </select>
@@ -223,7 +223,7 @@ function GenerateTable({ columns, data }) {
                                             : ''}
                                         </span>
                                     </div>
-                                    <div>{column.canFilter ? column.render('Filter') : null}</div>
+                                    <div className="filters-container">{column.canFilter ? column.render('Filter') : null}</div>
                                 </th>
                             </>
                             ))}

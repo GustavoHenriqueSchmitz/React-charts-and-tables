@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const server = require('./server');
 
+// Model for the table Employees in the database.
 const Employees = server.database.define('employees', {
     
     id: {
@@ -11,7 +12,7 @@ const Employees = server.database.define('employees', {
     },
 
     name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(30),
         allowNull: false,
     },
 
@@ -21,7 +22,7 @@ const Employees = server.database.define('employees', {
     },
 
     jobFunction: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(30),
         allowNull: false,
     },
 
@@ -33,7 +34,18 @@ const Employees = server.database.define('employees', {
     salaryTarget: {
         type: Sequelize.DECIMAL(15,2),
         allowNull: true,
+    },
+
+    entryDate: {
+        type: Sequelize.DATEONLY(),
+        allowNull: false
+    },
+
+    resignationDate: {
+        type: Sequelize.DATEONLY(),
+        allowNull: true
     }
+
 })
 
 module.exports = Employees;

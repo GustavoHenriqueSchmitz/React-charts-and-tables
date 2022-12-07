@@ -15,8 +15,7 @@
     color: black;
     border: 0.1vmin solid black;
     background-color: rgb(206, 204, 204);
-    height: 50%;
-    width: 23%;
+    cursor: pointer;
 }
 
 .buttons:hover {
@@ -31,12 +30,16 @@
 }
 
 .button-left {
+    height: 50%;
+    width: 23%;
     font-size: 2.8vmin;
     border-bottom-left-radius: 2vmin;
     border-top-left-radius: 2vmin;
 }
 
 .button-right {
+    height: 50%;
+    width: 23%;
     font-size: 2.8vmin;
     border-bottom-right-radius: 2vmin;
     border-top-right-radius: 2vmin;
