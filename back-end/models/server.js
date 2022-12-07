@@ -2,6 +2,7 @@ const express = require('express');
 const { Sequelize } = require('sequelize');
 const Router = require("express")
 
+// Server configuration
 const server = {
     app: express(),
     port: 3331,

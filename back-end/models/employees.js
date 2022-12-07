@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const server = require('./server');
 
+// Model for the table Employees in the database.
 const Employees = server.database.define('employees', {
     
     id: {
