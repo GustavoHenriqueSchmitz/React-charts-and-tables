@@ -1,7 +1,12 @@
 import Chart from 'react-apexcharts'
 import './DonutGraphic.css'
 
-function DonutGraphic({options}) {
+function DonutGraphic({series, labels}) {
+
+    const options = {
+        series: series,
+        labels: labels
+    }
 
     return (
         <>

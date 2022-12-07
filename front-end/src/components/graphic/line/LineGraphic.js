@@ -4,12 +4,10 @@ function LineGraphic({name, data, categories, text}) {
 
     try {
         const options = {
-        
             series: [{
                 name: name,
                 data: data
             }],
-            
             options: {
                 chart: {
                     height: 350,

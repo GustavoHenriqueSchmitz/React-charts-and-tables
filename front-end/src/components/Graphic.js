@@ -31,17 +31,19 @@ function Graphic() {
     }, [])
 
     try {
-
-        const optionsDonut = {
-            series: salary,
-            labels: ['0 a 500', '500 a 1000', '1000 a 2000', '2000 a 10000', '10000 >']
-        }
-
-        const optionsColumn = {
-
-            series: [{
-                    name: 'Salário',
-                    data: [
+        return (
+            <>
+                
+                <Header title="GRÁFICO"/>
+                <ButtonsGraphicTable textButtonLeft="Gráfico" textButtonRight="Tabela"/>
+                
+                <DonutGraphic 
+                    series={salary} 
+                    labels={["0 a 500", "500 a 1000", "1000 a 2000", "2000 a 10000", "10000 >"]}
+                />
+                
+                <ColumnGraphic 
+                    seriesData1={[
                         employees[0].salary,
                         employees[1].salary,
                         employees[2].salary,
@@ -51,10 +53,9 @@ function Graphic() {
                         employees[6].salary,
                         employees[7].salary,
                         employees[8].salary
-                    ]
-                }, {
-                    name: 'Meta Salarial',
-                    data: [
+                    ]} 
+                    seriesName1="Salário"
+                    seriesData2={[
                         employees[0].salaryTarget,
                         employees[1].salaryTarget,
                         employees[2].salaryTarget,
@@ -64,15 +65,9 @@ function Graphic() {
                         employees[6].salaryTarget,
                         employees[7].salaryTarget,
                         employees[8].salaryTarget
-                    ]
-                },
-            ],
-            options: {
-                dataLabels: {
-                    enabled: false
-                },
-                xaxis: {
-                    categories: [
+                    ]}
+                    seriesName2="Meta Salarial"
+                    categories={[
                         employees[0].name,
                         employees[1].name,
                         employees[2].name,
@@ -82,28 +77,16 @@ function Graphic() {
                         employees[6].name,
                         employees[7].name,
                         employees[8].name
-                    ],
-                },
-                yaxis: {
-                    title: {
-                        text: 'Funcionários | Comparação de Salários'
-                    }
-                },
-            },
-        };
+                    ]}
+                    title="Funcionários | Comparação de Salários'"
+                />
 
-        console.log(employeesQuantity)
-    
-        return (
-            <>
-                <Header title="GRÁFICO"/>
-                <ButtonsGraphicTable textButtonLeft="Gráfico" textButtonRight="Tabela"/>
-                <DonutGraphic options={optionsDonut}/>
-                <ColumnGraphic options={optionsColumn}/>
-                <LineGraphic name="Total de funcionários"
-                    categories={['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dec']}
+                <LineGraphic 
+                    name="Total de funcionários"
+                    categories={["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dec"]}
                     data={employeesQuantity} 
-                    text="Quantidade | Funcionários"/>
+                    text="Quantidade | Funcionários"
+                />
             </>
         )
     } catch {}
