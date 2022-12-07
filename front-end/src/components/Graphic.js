@@ -14,13 +14,18 @@ function Graphic() {
     const [employees, setEmployees] = useState(React.useMemo(
         () => [],[]
     ))
+    const [employeesQuantity, setEmployeesQuantity] = useState(React.useMemo(
+        () => [],[]
+    ))
 
     useEffect(()=> {
         async function getDatas() {
             const salary = await api.get('/graphic/donut')
             const employees = await api.get('/graphic/column')
+            const employeesQuantity = await api.get('/graphic/line')
             setSalary(salary.data)
             setEmployees(employees.data)
+            setEmployeesQuantity(employeesQuantity.data)
         }
         getDatas()
     }, [])
@@ -86,6 +91,8 @@ function Graphic() {
                 },
             },
         };
+
+        console.log(employeesQuantity)
     
         return (
             <>
@@ -93,10 +100,10 @@ function Graphic() {
                 <ButtonsGraphicTable textButtonLeft="Gráfico" textButtonRight="Tabela"/>
                 <DonutGraphic options={optionsDonut}/>
                 <ColumnGraphic options={optionsColumn}/>
-                <LineGraphic name="Total de salários pago"
-                    categories={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']}
-                    data={[10, 41, 35, 51, 49, 62, 69, 91, 148]} 
-                    text="Aumento | Gasto Salarial"/>
+                <LineGraphic name="Total de funcionários"
+                    categories={['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dec']}
+                    data={employeesQuantity} 
+                    text="Quantidade | Funcionários"/>
             </>
         )
     } catch {}

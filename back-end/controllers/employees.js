@@ -76,21 +76,41 @@ async function graphicLine(req, res) {
     const counterList = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     entryResignationDate.map(value => {
 
-        const entryYear = moment(value.entryDate).format('YYYY')
-        const entryMonth = moment(value.entryDate).format('M')
-        const resignationYear = moment(value.resignationDate).format('YYYY')
-        const resignationMonth = moment(value.resignationDate).format('M')
+        const entryYear = Number(moment(value.entryDate).format('YYYY'))
+        const entryMonth = Number(moment(value.entryDate).format('M'))
+        const resignationYear = Number(moment(value.resignationDate).format('YYYY'))
+        const resignationMonth = Number(moment(value.resignationDate).format('M'))
         
-        if (resignationYear == 'Invalid date' || resignationMonth == 'Invalid date') {
-            for (let counter = entryMonth; counter <= 12; counter += 1) {
-                counterList[counter - 1] += 1
+        // if (typeof resignationYear === NaN || typeof resignationMonth !== NaN) {
+        if (isNaN(resignationYear) || isNaN(resignationMonth)) {
+            
+            if (entryYear < 2022) {
+                for (let counter = 0; counter <= 11; counter += 1) {
+                    counterList[counter] += 1
+                }
+            }
+            
+            else {
+                for (let counterMonth = entryMonth; counterMonth <= 12; counterMonth += 1) {
+                    counterList[counterMonth - 1] += 1
+                }
+            }
+        } else {
+            
+            if (entryYear < 2022) {
+                for (let counter = 0; counter <= resignationMonth; counter += 1) {
+                    counterList[counter] += 1
+                }
+            } else {
+                for (let counterMonth = entryMonth; counterMonth <= resignationMonth; counterMonth += 1) {
+                    counterList[counterMonth - 1] += 1
+                }
             }
         }
     })
 
-    res.send(entryResignationDate)
+    res.send(counterList)
     res.end()
-
 }
 
 module.exports = { getEmployees, graphicDonut, graphicColumn, graphicLine }

@@ -11,7 +11,7 @@ const Employees = server.database.define('employees', {
     },
 
     name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(30),
         allowNull: false,
     },
 
@@ -21,7 +21,7 @@ const Employees = server.database.define('employees', {
     },
 
     jobFunction: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(30),
         allowNull: false,
     },
 
