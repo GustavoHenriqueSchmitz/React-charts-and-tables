@@ -16,6 +16,19 @@
     padding-top: 4%;
 }
 
+.default-filter {
+    width: 90%;
+}
+
+.slider-filter {
+    background-color: red;
+    width: 100px;
+}
+
+.general-filter {
+    width: 25%;
+}
+
 .options-container {
     display: flex;
     padding: 0 4%;
@@ -87,6 +100,8 @@ thead {
 }
 
 .button-navigate {
+    height: 100%;
+    width: 100%;
     background-color: rgb(0, 108, 117);
     color: white;
     cursor: pointer;

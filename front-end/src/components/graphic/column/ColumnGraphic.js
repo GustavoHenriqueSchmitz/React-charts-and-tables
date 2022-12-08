@@ -27,10 +27,9 @@ function ColumnGraphic({
                 xaxis: {
                     categories: categories
                 },
-                yaxis: {
-                    title: {
-                        text: title
-                    }
+                title: {
+                    text: title,
+                    align: 'top'
                 },
             },
         };

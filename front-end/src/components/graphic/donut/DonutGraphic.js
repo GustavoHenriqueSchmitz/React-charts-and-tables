@@ -6,13 +6,17 @@ function DonutGraphic({series, labels}) {
 
     const options = {
         series: series,
-        labels: labels
+        labels: labels,
+        title: {
+            text: 'Salários dos funcionários | Por intervalo',
+            align: 'top'
+        },
     }
 
     return (
         <>
             <div className="chart-container">
-                <Chart options={options} series={options.series} type="donut" width="500px" />
+                <Chart options={options} series={options.series} type="donut" width={480} />
             </div>
         </>
     )
