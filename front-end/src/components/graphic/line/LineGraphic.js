@@ -25,7 +25,7 @@ function LineGraphic({name, data, categories, text}) {
                 },
                 title: {
                     text: text,
-                    align: 'left'
+                    align: 'top'
                 },
                 grid: {
                     row: {

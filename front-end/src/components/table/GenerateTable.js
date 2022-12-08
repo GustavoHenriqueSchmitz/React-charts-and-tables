@@ -30,17 +30,18 @@ function GlobalFilter({
     }, 200)
 
     return (
-        <span>
+        <span className="sub-title">
             Search:{' '}
         <input
+        className="general-filter text"
             value={value || ""}
             onChange={e => {
                 setValue(e.target.value);
                 onChange(e.target.value);
             }}
-            placeholder={`${count} records...`}
+            placeholder={`${count} registros...`}
             style={{
-                fontSize: '1.1rem',
+                fontSize: '3vmin',
                 border: '0',
             }}
         />
@@ -56,11 +57,12 @@ function DefaultColumnFilter({
 
     return (
         <input
+        className="default-filter text"
             value={filterValue || ''}
             onChange={e => {
             setFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
             }}
-            placeholder={`Search ${count} records...`}
+            placeholder={`Pesquisar ${count} registros...`}
         />
     )
 }
@@ -87,6 +89,7 @@ function SliderColumnFilter({
     return (
         <>
             <input
+                className="slider-filter"
                 type="range"
                 min={min}
                 max={max}
@@ -94,8 +97,8 @@ function SliderColumnFilter({
                 onChange={e => {
                     setFilter(parseInt(e.target.value, 10))
                 }}
-                />
-            <button onClick={() => setFilter(undefined)} className="buttons">Off</button>
+            />
+            <button onClick={() => setFilter(undefined)} className="buttons text">Off</button>
         </>
     )
 }
@@ -261,16 +264,16 @@ function GenerateTable({ columns, data }) {
                 
                 <div className="pagination">
                     <div className="pagination-buttons">
-                        <button className="button-navigate" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+                        <button className="button-navigate text" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
                             {'<<'}
                         </button>{' '}
-                        <button className="button-navigate" onClick={() => previousPage()} disabled={!canPreviousPage}>
+                        <button className="button-navigate text" onClick={() => previousPage()} disabled={!canPreviousPage}>
                             {'<'}
                         </button>{' '}
-                        <button className="button-navigate" onClick={() => nextPage()} disabled={!canNextPage}>
+                        <button className="button-navigate text" onClick={() => nextPage()} disabled={!canNextPage}>
                             {'>'}
                         </button>{' '}
-                        <button className="button-navigate" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+                        <button className="button-navigate text" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
                             {'>>'}
                         </button>{' '}
                     </div>
@@ -284,13 +287,14 @@ function GenerateTable({ columns, data }) {
                         <span className="text">
                             | Ir para página:{' '}
                             <input
+                                className="text"
                                 type="number"
                                 defaultValue={pageIndex + 1}
                                 onChange={e => {
                                     const page = e.target.value ? Number(e.target.value) - 1 : 0
                                     gotoPage(page)
                                 }}
-                                style={{ width: '100px', borderRadius: '1vmin'}}
+                                style={{ width: '46.8%', borderRadius: '1vmin'}}
                             />
                         </span>{' '}
                     </div>
