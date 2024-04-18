@@ -19,7 +19,7 @@
   "homepage": "https://github.com/GustavoHenriqueSchmitz/React-charts-and-tables-Back#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.18.2",
+    "express": "^4.19.2",
     "moment": "^2.29.4",
     "mysql2": "^3.9.4",
     "sequelize": "^6.29.0"
